@@ -1,3 +1,7 @@
+/* ==========================================================================
+   SolidGround Design System — Components CSS
+   ========================================================================== */
+
 /* Card Base */
 .card {
   background-color: var(--color-dark-2);
@@ -30,7 +34,7 @@
 }
 
 /* ==========================================================================
-   Hero Section Specifics
+   Hero Section Specifics (Home)
    ========================================================================== */
 .hero-section {
   position: relative;
@@ -145,6 +149,387 @@
   opacity: 1;
   width: 24px;
   border-radius: 4px;
+}
+
+/* ==========================================================================
+   Projects Page Hero Banner (320px)
+   ========================================================================== */
+.projects-hero-banner {
+  position: relative;
+  height: 320px;
+  background-image: url('../assets/images/hero-construction.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.projects-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(13, 13, 13, 0.85);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+.projects-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 0 var(--space-md);
+}
+
+.projects-hero-content p {
+  color: var(--color-grey-light);
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+/* ==========================================================================
+   Sticky Filter Bar (Projects Page)
+   ========================================================================== */
+.sticky-filter-wrapper {
+  background-color: var(--color-dark-2);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 80px;
+  z-index: 900;
+  padding: 16px 0;
+  transition: all var(--transition-fast);
+}
+
+.filter-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-btn-pill {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-grey);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 20px;
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.filter-btn-pill:hover {
+  color: var(--color-white);
+  border-color: var(--color-grey);
+}
+
+.filter-btn-pill.active {
+  background-color: var(--color-orange);
+  border-color: var(--color-orange);
+  color: var(--color-white);
+}
+
+/* ==========================================================================
+   Projects Grid (3-Column with 1px Gap Border)
+   ========================================================================== */
+.projects-portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background-color: var(--color-border);
+  border: 1px solid var(--color-border);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .projects-portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .projects-portfolio-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.project-portfolio-card {
+  background-color: var(--color-dark-2);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: background-color var(--transition-fast);
+}
+
+.project-portfolio-card:hover {
+  background-color: #202020;
+}
+
+.project-card-media {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+  background-color: var(--color-dark-3);
+}
+
+.project-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-portfolio-card:hover .project-card-media img {
+  transform: scale(1.06);
+}
+
+.project-cat-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background-color: rgba(13, 13, 13, 0.9);
+  border: 1px solid var(--color-orange);
+  color: var(--color-orange);
+  padding: 4px 10px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.project-card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  gap: 16px;
+}
+
+.project-card-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-white);
+  margin-bottom: 6px;
+}
+
+.project-card-loc {
+  font-size: 12px;
+  color: var(--color-grey);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.project-card-loc svg {
+  color: var(--color-orange);
+}
+
+.btn-details {
+  align-self: flex-start;
+  font-size: 13px;
+  padding: 10px 20px;
+}
+
+/* ==========================================================================
+   Project Detail Modal & Milestone Timeline Stepper
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(8px);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+.modal-container {
+  background-color: var(--color-dark-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 40px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+  animation: slideUp 0.3s ease forwards;
+}
+
+.modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: transparent;
+  border: none;
+  color: var(--color-white);
+  font-size: 28px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color var(--transition-fast);
+  z-index: 5;
+}
+
+.modal-close:hover {
+  color: var(--color-orange);
+}
+
+.modal-img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-md);
+  border: 1px solid var(--color-border);
+}
+
+.modal-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+  background-color: var(--color-dark-3);
+  border: 1px solid var(--color-border);
+  padding: 12px 16px;
+  margin: var(--space-md) 0;
+}
+
+.modal-meta-item .lbl {
+  font-size: 11px;
+  color: var(--color-grey);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.modal-meta-item .val {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+/* Milestone Timeline Stepper */
+.milestone-section {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+}
+
+.milestone-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--color-orange);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.milestone-stepper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.stepper-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  min-width: 100px;
+}
+
+.step-date {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-grey);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.step-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.step-marker .dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--color-dark-3);
+  border: 2px solid var(--color-border);
+  z-index: 2;
+  transition: all var(--transition-fast);
+}
+
+.stepper-step.done .step-marker .dot {
+  background-color: var(--color-orange);
+  border-color: var(--color-orange);
+  box-shadow: 0 0 10px rgba(232, 97, 10, 0.6);
+}
+
+.step-marker .line {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-border);
+  border-top: 1px dashed var(--color-border);
+  z-index: 1;
+}
+
+.stepper-step.done .step-marker .line {
+  background-color: var(--color-orange);
+  border: none;
+}
+
+.step-label {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-grey-light);
+  line-height: 1.2;
+}
+
+.stepper-step.done .step-label {
+  color: var(--color-white);
 }
 
 /* ==========================================================================
@@ -327,7 +712,7 @@
 }
 
 /* ==========================================================================
-   Section 4 — Recent Projects Grid
+   Section 4 — Recent Projects Grid (Home)
    ========================================================================== */
 .projects-grid-3 {
   display: grid;
@@ -697,190 +1082,4 @@
 .form-success-box p {
   color: var(--color-grey-light);
   font-size: 14px;
-}
-
-/* ==========================================================================
-   Inner Pages & Modals
-   ========================================================================== */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(6px);
-  z-index: 2000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-md);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity var(--transition-base), visibility var(--transition-base);
-}
-
-.modal-overlay.open {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: all;
-}
-
-.modal-container {
-  background-color: var(--color-dark-2);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  max-width: 800px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  padding: var(--space-xl);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
-}
-
-.modal-close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: transparent;
-  border: none;
-  color: var(--color-grey);
-  font-size: 24px;
-  cursor: pointer;
-  transition: color var(--transition-fast);
-}
-
-.modal-close:hover {
-  color: var(--color-orange);
-}
-
-.page-header {
-  padding-top: var(--space-3xl);
-  padding-bottom: var(--space-xl);
-  background-color: var(--color-dark-2);
-  border-bottom: 1px solid var(--color-border);
-  position: relative;
-  overflow: hidden;
-}
-
-.breadcrumb {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: var(--color-grey);
-  margin-bottom: var(--space-sm);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.breadcrumb a:hover {
-  color: var(--color-orange);
-}
-
-.breadcrumb span.sep {
-  color: var(--color-orange);
-}
-
-.filter-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xs);
-  margin-bottom: var(--space-xl);
-}
-
-.filter-btn {
-  padding: 8px 18px;
-  background-color: var(--color-dark-2);
-  border: 1px solid var(--color-border);
-  color: var(--color-grey-light);
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-  border-radius: var(--radius-btn);
-  transition: all var(--transition-fast);
-}
-
-.filter-btn:hover,
-.filter-btn.active {
-  background-color: var(--color-orange);
-  border-color: var(--color-orange);
-  color: var(--color-white);
-}
-
-.stat-box {
-  background-color: var(--color-dark-2);
-  border: 1px solid var(--color-border);
-  border-left: 4px solid var(--color-orange);
-  padding: var(--space-md) var(--space-lg);
-  border-radius: var(--radius-sm);
-}
-
-.stat-number {
-  font-family: var(--font-display);
-  font-size: clamp(36px, 5vw, 56px);
-  font-weight: 800;
-  line-height: 1;
-  color: var(--color-white);
-  margin-bottom: 4px;
-}
-
-.stat-number span.accent {
-  color: var(--color-orange);
-}
-
-.stat-label {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--color-grey-light);
-  font-weight: 600;
-}
-
-.form-group {
-  margin-bottom: var(--space-md);
-}
-
-.form-label {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 6px;
-  color: var(--color-grey-light);
-}
-
-.form-label span.req {
-  color: var(--color-orange);
-}
-
-.form-control {
-  width: 100%;
-  padding: 12px 16px;
-  background-color: var(--color-dark);
-  border: 1px solid var(--color-border);
-  color: var(--color-white);
-  font-family: var(--font-body);
-  font-size: 15px;
-  border-radius: var(--radius-sm);
-  transition: all var(--transition-fast);
-  outline: none;
-}
-
-.form-control:focus {
-  border-color: var(--color-orange);
-  box-shadow: 0 0 0 2px rgba(232, 97, 10, 0.2);
-}
-
-textarea.form-control {
-  min-height: 120px;
-  resize: vertical;
-}
-
-select.form-control {
-  cursor: pointer;
 }

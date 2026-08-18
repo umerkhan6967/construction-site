@@ -78,54 +78,83 @@
     <a href="request-a-bid.html" class="btn btn-primary" style="width: 100%; max-width: 280px; text-align: center;">GET A QUOTE</a>
   </div>
 
-  <!-- Main Content Shell -->
+  <!-- Main Content -->
   <main id="main-content">
-    <!-- Page Header -->
-    <header class="page-header">
-      <div class="container">
-        <div class="breadcrumb">
-          <a href="index.html">Home</a>
-          <span class="sep">/</span>
-          <span>Projects</span>
-        </div>
-        <span class="eyebrow">// PORTFOLIO OF EXCELLENCE</span>
-        <h1 class="section-title">GLOBAL LANDMARK PROJECTS</h1>
-        <p style="max-width: 600px; margin-top: var(--space-xs); color: var(--color-grey-light);">Discover over three decades of transformative civil works, complex high-rise structures, and critical transport corridors.</p>
+
+    <!-- SECTION 1 — PAGE HERO BANNER (Height 320px) -->
+    <section class="projects-hero-banner" id="projects-hero">
+      <div class="projects-hero-overlay"></div>
+      <div class="projects-hero-content reveal-on-scroll">
+        <span class="eyebrow">// OUR WORK</span>
+        <h1 class="section-title" style="margin-top: 8px; margin-bottom: 12px;">OUR PROJECTS</h1>
+        <p>Delivering transformative civil engineering, transport corridors, and complex structural landmarks worldwide.</p>
       </div>
-    </header>
+    </section>
 
-    <!-- Projects Grid Section Shell -->
-    <section class="section section-dark">
+    <!-- SECTION 2 — STICKY FILTER BAR -->
+    <section class="sticky-filter-wrapper" id="filter-section">
       <div class="container">
-        <div class="filter-bar">
-          <button class="filter-btn active" data-filter="all">All Projects</button>
-          <button class="filter-btn" data-filter="infrastructure">Infrastructure</button>
-          <button class="filter-btn" data-filter="commercial">Commercial</button>
-          <button class="filter-btn" data-filter="industrial">Industrial</button>
-          <button class="filter-btn" data-filter="civil">Heavy Civil</button>
-        </div>
-
-        <div class="grid grid-3" id="projects-container">
-          <!-- Projects grid content -->
+        <div class="filter-bar-inner" role="toolbar" aria-label="Project Category Filters">
+          <button class="filter-btn-pill active" data-filter="all">ALL</button>
+          <button class="filter-btn-pill" data-filter="roads-highways">ROADS &amp; HIGHWAYS</button>
+          <button class="filter-btn-pill" data-filter="bridges">BRIDGES</button>
+          <button class="filter-btn-pill" data-filter="commercial">COMMERCIAL</button>
+          <button class="filter-btn-pill" data-filter="industrial">INDUSTRIAL</button>
         </div>
       </div>
     </section>
+
+    <!-- SECTION 3 — PROJECTS GRID (9 Projects Total, 3-Column, 1px Gap) -->
+    <section class="section section-dark" style="padding-top: var(--space-xl); padding-bottom: var(--space-3xl);">
+      <div class="container">
+        <div id="projects-grid" class="projects-portfolio-grid" aria-live="polite">
+          <!-- Dynamically populated via js/projects.js -->
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Project Detail Modal -->
-  <div id="project-modal" class="modal-overlay">
+  <!-- PROJECT DETAIL MODAL -->
+  <div id="project-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-project-title">
     <div class="modal-container">
-      <button class="modal-close" aria-label="Close modal">✕</button>
-      <span class="eyebrow modal-category">// INFRASTRUCTURE</span>
-      <h2 class="modal-title" style="margin-top: 6px; margin-bottom: 8px;">Project Title</h2>
-      <p class="modal-location" style="color: var(--color-orange); font-weight: 600; margin-bottom: var(--space-md);">Location, Country</p>
-      <p class="modal-desc" style="margin-bottom: var(--space-lg); color: var(--color-grey-light);">Detailed engineering and architectural specifications.</p>
-      <div style="display: flex; gap: var(--space-md); align-items: center; justify-content: space-between; flex-wrap: wrap;">
-        <div>
-          <div style="font-size: 11px; text-transform: uppercase; color: var(--color-grey);">Contract Value</div>
-          <div class="modal-budget" style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--color-white);">$0M</div>
+      <button class="modal-close" aria-label="Close project modal">✕</button>
+      
+      <img class="modal-img" src="" alt="Project Photo" loading="lazy">
+      
+      <span class="eyebrow modal-badge">// CATEGORY</span>
+      <h2 id="modal-project-title" class="modal-title" style="font-family: var(--font-display); font-size: 28px; font-weight: 800; color: #fff; margin-top: 4px; margin-bottom: 4px; text-transform: uppercase;">Project Title</h2>
+      
+      <!-- Meta Specs Grid -->
+      <div class="modal-meta-grid">
+        <div class="modal-meta-item">
+          <div class="lbl">Location</div>
+          <div class="val modal-location-text">Global Site</div>
         </div>
-        <a href="request-a-bid.html" class="btn btn-primary">INQUIRE SIMILAR PROJECT</a>
+        <div class="modal-meta-item">
+          <div class="lbl">Contract Value</div>
+          <div class="val modal-value-text" style="color: var(--color-orange);">$0M</div>
+        </div>
+        <div class="modal-meta-item">
+          <div class="lbl">Client Entity</div>
+          <div class="val modal-client-text">Public Authority</div>
+        </div>
+      </div>
+
+      <p class="modal-desc" style="color: var(--color-grey-light); font-size: 14px; line-height: 1.7; margin-bottom: var(--space-md);">
+        Detailed engineering and architectural specifications.
+      </p>
+
+      <!-- Horizontal Milestone Timeline Stepper -->
+      <div class="milestone-section">
+        <div class="milestone-title">// PROJECT LIFECYCLE &amp; MILESTONES</div>
+        <div class="milestone-stepper" aria-label="Project Milestones Timeline">
+          <!-- Dynamically rendered steps -->
+        </div>
+      </div>
+
+      <div style="margin-top: var(--space-lg); display: flex; justify-content: flex-end;">
+        <a href="request-a-bid.html" class="btn btn-primary">INQUIRE SIMILAR SCOPE</a>
       </div>
     </div>
   </div>
@@ -269,5 +298,6 @@
   <script src="js/loader.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/projects.js"></script>
 </body>
 </html>
