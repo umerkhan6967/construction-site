@@ -282,4 +282,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     calculateEstimate();
   }
+
+  // 7. Request a Bid Page Form Handler
+  const bidForm = document.getElementById('bid-form');
+  if (bidForm) {
+    bidForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const parentCard = bidForm.closest('.card') || bidForm.parentElement;
+      if (parentCard) {
+        parentCard.innerHTML = `
+          <div style="text-align: center; padding: 40px 20px;">
+            <svg viewBox="0 0 24 24" width="56" height="56" fill="none" stroke="#E8610A" stroke-width="2" style="margin: 0 auto 16px;">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <h3 style="font-family: var(--font-display); font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px;">RFP TENDER SUBMITTED</h3>
+            <p style="color: var(--color-grey-light); font-size: 15px; max-width: 480px; margin: 0 auto;">Your bid specifications have been securely routed to our senior estimators. We will provide a formal engineering estimate within 24 hours.</p>
+          </div>
+        `;
+      }
+    });
+  }
 });
