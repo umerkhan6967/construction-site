@@ -146,7 +146,7 @@
 }
 
 /* ==========================================================================
-   Page Hero Banner (Projects, Capabilities, Fleet)
+   Page Hero Banner (Projects, Capabilities, Fleet, Bid)
    ========================================================================== */
 .projects-hero-banner {
   position: relative;
@@ -651,7 +651,7 @@
 
 .form-group-minimal {
   position: relative;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .form-input-minimal {
@@ -660,7 +660,7 @@
   border: none;
   border-bottom: 1px solid var(--color-border);
   color: var(--color-white);
-  padding: 12px 0;
+  padding: 14px 0;
   font-family: var(--font-body);
   font-size: 14px;
   outline: none;
@@ -681,10 +681,10 @@
   border: none;
   border-bottom: 1px solid var(--color-border);
   color: var(--color-white);
-  padding: 12px 0;
+  padding: 14px 0;
   font-family: var(--font-body);
   font-size: 14px;
-  min-height: 90px;
+  min-height: 120px;
   resize: vertical;
   outline: none;
   margin-bottom: var(--space-md);
@@ -700,13 +700,14 @@
 }
 
 .form-error-msg {
-  font-size: 11px;
+  font-size: 12px;
   color: #FF4D4D;
   margin-top: 4px;
   display: none;
 }
 
 .form-group-minimal.error .form-input-minimal,
+.form-group-minimal.error .form-select-minimal,
 .form-group-minimal.error .form-textarea-minimal {
   border-bottom-color: #FF4D4D;
 }
@@ -1479,4 +1480,300 @@
 
 .stepper-step.done .step-label {
   color: var(--color-white);
+}
+
+/* ==========================================================================
+   Request a Bid Page Two-Column Layout & Form Components
+   ========================================================================== */
+.bid-split-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+@media (min-width: 992px) {
+  .bid-split-layout {
+    grid-template-columns: 35% 65%;
+  }
+}
+
+.bid-left-col {
+  background-color: var(--color-dark-2);
+  padding: 48px 36px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+@media (min-width: 992px) {
+  .bid-left-col {
+    border-bottom: none;
+    border-right: 1px solid var(--color-border);
+  }
+}
+
+.bid-right-col {
+  background-color: var(--color-dark);
+  padding: 48px 36px;
+}
+
+.bid-value-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.bid-value-icon {
+  color: var(--color-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bid-value-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.bid-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.bid-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--color-grey-light);
+  font-size: 13px;
+}
+
+.bid-contact-row a {
+  color: var(--color-grey-light);
+  transition: color var(--transition-fast);
+}
+
+.bid-contact-row a:hover {
+  color: var(--color-orange);
+}
+
+.bid-contact-row .contact-icon-orange {
+  color: var(--color-orange);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.bid-contact-row .contact-icon-orange svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* FAQ Accordion */
+.faq-accordion {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.faq-item {
+  border: 1px solid var(--color-border);
+  background-color: var(--color-dark-3);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: border-color var(--transition-fast);
+}
+
+.faq-item.active {
+  border-color: var(--color-orange);
+}
+
+.faq-question-btn {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--color-white);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-chevron {
+  color: var(--color-orange);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.faq-chevron svg {
+  width: 16px;
+  height: 16px;
+}
+
+.faq-item.active .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.faq-answer-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--color-grey-light);
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 0 16px;
+}
+
+.faq-item.active .faq-answer-panel {
+  max-height: 200px;
+  padding: 0 16px 14px 16px;
+}
+
+/* Minimal Dropdown / Select */
+.form-select-minimal {
+  width: 100%;
+  background-color: var(--color-dark-2);
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-white);
+  padding: 14px 0;
+  font-family: var(--font-body);
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23E8610A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  transition: border-color var(--transition-fast);
+}
+
+.form-select-minimal:focus {
+  border-bottom-color: var(--color-orange);
+}
+
+.form-select-minimal option {
+  background-color: var(--color-dark-2);
+  color: var(--color-white);
+  padding: 8px;
+}
+
+/* Custom File Upload */
+.file-input-hidden {
+  display: none;
+}
+
+.custom-file-upload {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  color: var(--color-grey);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin-bottom: var(--space-md);
+  background-color: var(--color-dark-2);
+}
+
+.custom-file-upload:hover {
+  border-color: var(--color-orange);
+  color: var(--color-white);
+}
+
+.custom-file-upload svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-orange);
+}
+
+/* Custom Styled Checkbox */
+.custom-checkbox-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--color-grey-light);
+  margin-bottom: var(--space-lg);
+  user-select: none;
+}
+
+.custom-checkbox-wrap input[type="checkbox"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  background-color: var(--color-dark-2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.custom-checkbox-wrap input[type="checkbox"]:checked {
+  background-color: var(--color-orange);
+  border-color: var(--color-orange);
+}
+
+.custom-checkbox-wrap input[type="checkbox"]:checked::after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 9px;
+  border: solid var(--color-white);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  margin-bottom: 2px;
+}
+
+/* Full Column Success Box */
+.bid-success-panel {
+  display: none;
+  text-align: center;
+  padding: 64px 24px;
+  animation: fadeIn 0.4s ease;
+}
+
+.bid-success-panel .success-icon-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: rgba(232, 97, 10, 0.1);
+  border: 2px solid var(--color-orange);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: var(--color-orange);
+}
+
+.bid-success-panel .success-icon-wrap svg {
+  width: 40px;
+  height: 40px;
 }
