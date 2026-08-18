@@ -1,18 +1,27 @@
-// SolidGround - Page Loader & State
-document.addEventListener('DOMContentLoaded', () => {
-  const loader = document.getElementById('page-loader');
-  if (loader) {
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        loader.classList.add('loaded');
-      }, 300);
-    });
+// SolidGround - Page Loader Lifecycle Controller
+(function() {
+  const startTime = Date.now();
+  const MIN_DISPLAY_TIME = 800; // 800ms minimum
 
-    // Fallback in case window load takes too long
-    setTimeout(() => {
-      if (loader && !loader.classList.contains('loaded')) {
-        loader.classList.add('loaded');
-      }
-    }, 2000);
-  }
-});
+  const windowLoadPromise = new Promise((resolve) => {
+    if (document.readyState === 'complete') {
+      resolve();
+    } else {
+      window.addEventListener('load', resolve, { once: true });
+    }
+  });
+
+  const minTimerPromise = new Promise((resolve) => {
+    setTimeout(resolve, MIN_DISPLAY_TIME);
+  });
+
+  Promise.all([windowLoadPromise, minTimerPromise]).then(() => {
+    const loader = document.getElementById('page-loader');
+    if (loader) {
+      loader.classList.add('loaded');
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 500); // matches the 0.5s transition
+    }
+  });
+})();

@@ -16,40 +16,36 @@
 <body>
   <!-- Page Loader -->
   <div id="page-loader" class="page-loader">
-    <div class="loader-spinner"></div>
-    <div class="loader-text">SolidGround // Loading Fleet & Tech</div>
-  </div>
-
-  <!-- Site Top Bar -->
-  <div class="site-topbar">
-    <div class="container topbar-inner">
-      <div class="topbar-meta">
-        <span class="topbar-item"><span class="pulse-dot"></span> <span class="highlight">FLEET READINESS:</span> 98.4% Telemetry Uptime</span>
-      </div>
-      <div class="topbar-meta">
-        <span class="topbar-item">Logistics Hub: <span class="highlight">+1 (800) 555-SOLID</span></span>
-      </div>
+    <div class="loader-content">
+      <div class="loader-brand">SOLIDGROUND</div>
+      <div class="loader-line"></div>
     </div>
   </div>
 
-  <!-- Header & Navigation -->
+  <!-- Sticky Header / Nav -->
   <header class="site-header">
     <div class="container nav-inner">
       <a href="index.html" class="brand-logo">
-        <div class="logo-mark">SG</div>
-        <span>SOLID<span class="sub">GROUND</span></span>
+        <span class="logo-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5">
+            <rect x="4" y="4" width="16" height="16" transform="rotate(45 12 12)" fill="#E8610A" stroke="#E8610A"></rect>
+          </svg>
+        </span>
+        <span><span class="brand-solid">SOLID</span><span class="brand-ground">GROUND</span></span>
       </a>
 
       <nav class="nav-menu">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="projects.html" class="nav-link">Projects</a>
-        <a href="capabilities.html" class="nav-link">Capabilities</a>
-        <a href="fleet.html" class="nav-link">Fleet & Tech</a>
-        <a href="request-a-bid.html" class="nav-link">Request a Bid</a>
+        <a href="index.html" class="nav-link">HOME</a>
+        <a href="index.html#about" class="nav-link">ABOUT US</a>
+        <a href="capabilities.html" class="nav-link">SERVICES</a>
+        <a href="projects.html" class="nav-link">PROJECTS</a>
+        <a href="index.html#safety" class="nav-link">SAFETY</a>
+        <a href="index.html#careers" class="nav-link">CAREERS</a>
+        <a href="request-a-bid.html" class="nav-link">CONTACT</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="request-a-bid.html" class="btn btn-primary">Request a Bid</a>
+        <a href="request-a-bid.html" class="btn btn-primary btn-quote">GET A QUOTE</a>
         <button class="nav-toggle" aria-label="Toggle Menu">
           <span></span>
           <span></span>
@@ -59,22 +55,27 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
-  <div class="nav-backdrop"></div>
-  <div class="mobile-nav">
+  <!-- Mobile Overlay Menu -->
+  <div class="mobile-nav-overlay">
     <button class="mobile-nav-close" aria-label="Close Menu">✕</button>
-    <div class="brand-logo">
-      <div class="logo-mark">SG</div>
-      <span>SOLID<span class="sub">GROUND</span></span>
-    </div>
+    <a href="index.html" class="brand-logo" style="margin-bottom: var(--space-lg);">
+      <span class="logo-icon">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <rect x="4" y="4" width="16" height="16" transform="rotate(45 12 12)" fill="#E8610A" stroke="#E8610A"></rect>
+        </svg>
+      </span>
+      <span><span class="brand-solid">SOLID</span><span class="brand-ground">GROUND</span></span>
+    </a>
     <nav class="mobile-nav-links">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="projects.html" class="nav-link">Projects</a>
-      <a href="capabilities.html" class="nav-link">Capabilities</a>
-      <a href="fleet.html" class="nav-link">Fleet & Tech</a>
-      <a href="request-a-bid.html" class="nav-link">Request a Bid</a>
+      <a href="index.html" class="nav-link">HOME</a>
+      <a href="index.html#about" class="nav-link">ABOUT US</a>
+      <a href="capabilities.html" class="nav-link">SERVICES</a>
+      <a href="projects.html" class="nav-link">PROJECTS</a>
+      <a href="index.html#safety" class="nav-link">SAFETY</a>
+      <a href="index.html#careers" class="nav-link">CAREERS</a>
+      <a href="request-a-bid.html" class="nav-link">CONTACT</a>
     </nav>
-    <a href="request-a-bid.html" class="btn btn-primary" style="width: 100%; text-align: center;">Request a Bid</a>
+    <a href="request-a-bid.html" class="btn btn-primary" style="width: 100%; max-width: 280px; text-align: center;">GET A QUOTE</a>
   </div>
 
   <!-- Main Content Shell -->
@@ -89,7 +90,7 @@
         </div>
         <span class="eyebrow">// INDUSTRIAL POWER & PRECISION</span>
         <h1 class="section-title">HEAVY MACHINERY & AUTONOMOUS SITE TECH</h1>
-        <p style="max-width: 600px; margin-top: var(--space-xs);">State-of-the-art heavy lifting machinery, automated grading systems, and real-time IoT site monitoring.</p>
+        <p style="max-width: 600px; margin-top: var(--space-xs); color: var(--color-grey-light);">State-of-the-art heavy lifting machinery, automated grading systems, and real-time IoT site monitoring.</p>
       </div>
     </header>
 
@@ -97,7 +98,7 @@
     <section class="section section-dark">
       <div class="container">
         <div class="grid grid-3" id="fleet-container">
-          <!-- Fleet cards will go here -->
+          <!-- Fleet equipment cards will go here -->
         </div>
       </div>
     </section>
@@ -107,41 +108,133 @@
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top">
+        <!-- Col 1: Logo + Desc + Socials -->
         <div class="footer-col">
-          <div class="brand-logo" style="margin-bottom: var(--space-sm);">
-            <div class="logo-mark">SG</div>
-            <span>SOLID<span class="sub">GROUND</span></span>
+          <a href="index.html" class="brand-logo" style="margin-bottom: 8px;">
+            <span class="logo-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5">
+                <rect x="4" y="4" width="16" height="16" transform="rotate(45 12 12)" fill="#E8610A" stroke="#E8610A"></rect>
+              </svg>
+            </span>
+            <span><span class="brand-solid">SOLID</span><span class="brand-ground">GROUND</span></span>
+          </a>
+          <p class="footer-desc">
+            SolidGround is an international heavy construction and civil engineering firm known for turnkey delivery of complex mega-structures, bridges, and critical transportation networks.
+          </p>
+          <div class="social-links">
+            <a href="#" class="social-box" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-box" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a href="#" class="social-box" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="#" class="social-box" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+              </svg>
+            </a>
           </div>
-          <p>Global leader in heavy civil engineering, complex skyscraper superstructures, and critical public infrastructure delivery.</p>
         </div>
+
+        <!-- Col 2: Quick Links -->
         <div class="footer-col">
-          <h4>Navigation</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projects Portfolio</a></li>
-            <li><a href="capabilities.html">Capabilities</a></li>
-            <li><a href="fleet.html">Equipment Fleet</a></li>
-            <li><a href="request-a-bid.html">Request a Bid</a></li>
+          <span class="eyebrow" style="margin-bottom: var(--space-sm);">// QUICK LINKS</span>
+          <ul class="footer-links">
+            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="capabilities.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="index.html#safety">Safety</a></li>
+            <li><a href="index.html#careers">Careers</a></li>
+            <li><a href="request-a-bid.html">Contact</a></li>
           </ul>
         </div>
+
+        <!-- Col 3: Services -->
         <div class="footer-col">
-          <h4>Capabilities</h4>
-          <ul>
-            <li><a href="capabilities.html">Heavy Civil Infrastructure</a></li>
-            <li><a href="capabilities.html">Commercial Superstructures</a></li>
-            <li><a href="capabilities.html">BIM 4D & Virtual Engineering</a></li>
-            <li><a href="capabilities.html">Renewable Energy Complexes</a></li>
+          <span class="eyebrow" style="margin-bottom: var(--space-sm);">// SERVICES</span>
+          <ul class="footer-links">
+            <li><a href="capabilities.html">Heavy Construction</a></li>
+            <li><a href="capabilities.html">Infrastructure</a></li>
+            <li><a href="capabilities.html">Earthwork</a></li>
+            <li><a href="capabilities.html">Concrete Work</a></li>
+            <li><a href="capabilities.html">Steel Structures</a></li>
+            <li><a href="capabilities.html">Project Management</a></li>
           </ul>
         </div>
+
+        <!-- Col 4: Contact Us -->
         <div class="footer-col">
-          <h4>Headquarters</h4>
-          <p style="margin-bottom: 8px;">SolidGround Tower, 450 Lexington Ave<br>New York, NY 10017</p>
-          <p>Direct: <span style="color: var(--color-orange);">+1 (212) 555-0199</span><br>Email: <span style="color: var(--color-white);">bids@solidground.build</span></p>
+          <span class="eyebrow" style="margin-bottom: var(--space-sm);">// CONTACT US</span>
+          <div class="footer-contact-list">
+            <div class="footer-contact-item">
+              <span class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </span>
+              <span>450 Lexington Avenue, 28th Floor<br>New York, NY 10017</span>
+            </div>
+            <div class="footer-contact-item">
+              <span class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+              </span>
+              <a href="tel:+18005557654">+1 (800) 555-SOLID</a>
+            </div>
+            <div class="footer-contact-item">
+              <span class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+              </span>
+              <a href="mailto:bids@solidground.build">bids@solidground.build</a>
+            </div>
+            <div class="footer-contact-item">
+              <span class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </span>
+              <span>Mon – Fri: 07:00 – 18:00 EST<br>Field Ops: 24/7 Monitored</span>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Divider -->
+      <div class="footer-divider"></div>
+
+      <!-- Bottom Bar -->
       <div class="footer-bottom">
-        <span>&copy; 2026 SolidGround Infrastructure & Construction Inc. All rights reserved.</span>
-        <span>OSHA Platinum Certified // ISO 9001:2015 // LEED Gold Partner</span>
+        <div>
+          &copy; 2026 SolidGround Infrastructure & Construction. All Rights Reserved.
+        </div>
+        <div class="footer-credit">
+          Built by <a href="#" target="_blank" rel="noopener">Umer</a> — Portfolio
+        </div>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <span>|</span>
+          <a href="#">Terms of Service</a>
+        </div>
       </div>
     </div>
   </footer>
