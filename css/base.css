@@ -34,28 +34,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: clamp(40px, 6vw, 72px);
+  font-size: clamp(36px, 5vw, 64px);
   font-weight: 800;
 }
 
 h2 {
-  font-size: clamp(32px, 4.5vw, 52px);
+  font-size: clamp(28px, 3.5vw, 44px);
   font-weight: 800;
 }
 
 h3 {
-  font-size: clamp(24px, 3vw, 36px);
+  font-size: clamp(20px, 2.5vw, 28px);
   font-weight: 700;
 }
 
 h4 {
-  font-size: clamp(20px, 2.5vw, 28px);
+  font-size: clamp(16px, 2vw, 22px);
   font-weight: 700;
 }
 
 p {
   color: var(--color-grey);
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 a {
@@ -64,10 +64,15 @@ a {
   transition: color var(--transition-fast);
 }
 
-img, svg, video {
+img, video {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+svg {
+  display: block;
+  flex-shrink: 0;
 }
 
 ul, ol {
@@ -88,7 +93,7 @@ ul, ol {
 }
 
 .section-title {
-  font-size: clamp(28px, 4vw, 42px);
+  font-size: clamp(28px, 3.5vw, 42px);
   font-weight: 800;
   font-family: var(--font-display);
   text-transform: uppercase;
@@ -103,10 +108,10 @@ ul, ol {
   align-items: center;
   justify-content: center;
   gap: var(--space-xs);
-  padding: 14px 28px;
+  padding: 13px 26px;
   border-radius: var(--radius-btn);
   font-family: var(--font-display);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -165,4 +170,9 @@ ul, ol {
 
 .btn-no-arrow::after {
   display: none;
+}
+
+.btn-sm {
+  padding: 8px 18px;
+  font-size: 13px;
 }
