@@ -1,4 +1,83 @@
 // SolidGround - Core Application Interactions & Controllers
+
+// Reusable Global Modal Controller
+window.SGModal = {
+  open(modalEl) {
+    if (!modalEl) return;
+    modalEl.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    const closeBtn = modalEl.querySelector('.modal-close');
+    if (closeBtn) closeBtn.focus();
+  },
+  close(modalEl) {
+    if (!modalEl) return;
+    modalEl.classList.remove('open');
+    document.body.style.overflow = '';
+  },
+  init(modalEl) {
+    if (!modalEl || modalEl.dataset.modalInitialized) return;
+    modalEl.dataset.modalInitialized = 'true';
+
+    const closeBtn = modalEl.querySelector('.modal-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => this.close(modalEl));
+    }
+
+    modalEl.addEventListener('click', (e) => {
+      if (e.target === modalEl) this.close(modalEl);
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modalEl.classList.contains('open')) {
+        this.close(modalEl);
+      }
+      // Accessibility Focus Trapping
+      if (e.key === 'Tab' && modalEl.classList.contains('open')) {
+        const focusable = modalEl.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (focusable.length > 0) {
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
+    });
+  }
+};
+
+// Reusable Global Filter Bar Controller
+window.SGFilter = {
+  bind(filterBtnsSelector, gridEl, onFilterChange) {
+    const btns = document.querySelectorAll(filterBtnsSelector);
+    if (!btns.length || !gridEl) return;
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filterVal = btn.getAttribute('data-filter') || 'all';
+
+        gridEl.style.opacity = '0';
+        gridEl.style.transform = 'translateY(6px)';
+
+        setTimeout(() => {
+          if (typeof onFilterChange === 'function') {
+            onFilterChange(filterVal);
+          }
+          gridEl.style.opacity = '1';
+          gridEl.style.transform = 'translateY(0)';
+        }, 150);
+      });
+    });
+  }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // 1. Scroll-Triggered Fade-In Reveal Observer
@@ -37,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
           function updateCounter(currentTime) {
             const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1);
-            // Ease out cubic
             const easeProgress = 1 - Math.pow(1 - progress, 3);
             const currentVal = Math.floor(easeProgress * target);
 
@@ -94,7 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Clear error on input
     Object.values(formFields).forEach(input => {
       if (input) {
         input.addEventListener('input', () => clearFieldError(input));
@@ -105,38 +182,32 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       let isValid = true;
 
-      // Validate Name
       if (formFields.name && formFields.name.value.trim().length < 2) {
         setFieldError(formFields.name, 'Please enter your full name');
         isValid = false;
       }
 
-      // Validate Company
       if (formFields.company && formFields.company.value.trim().length < 2) {
         setFieldError(formFields.company, 'Please enter company or organization');
         isValid = false;
       }
 
-      // Validate Email
       if (formFields.email && !validateEmail(formFields.email.value)) {
         setFieldError(formFields.email, 'Please provide a valid work email address');
         isValid = false;
       }
 
-      // Validate Phone
       if (formFields.phone && formFields.phone.value.trim().length < 7) {
         setFieldError(formFields.phone, 'Please enter a valid contact phone number');
         isValid = false;
       }
 
-      // Validate Message
       if (formFields.message && formFields.message.value.trim().length < 10) {
         setFieldError(formFields.message, 'Please provide project details (minimum 10 characters)');
         isValid = false;
       }
 
       if (isValid) {
-        // Success state
         contactForm.style.display = 'none';
         if (successBox) {
           successBox.style.display = 'block';
@@ -146,144 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Project Filter Bar (Projects Page)
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card[data-category]');
-
-  if (filterBtns.length > 0 && projectCards.length > 0) {
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const category = btn.getAttribute('data-filter');
-
-        projectCards.forEach(card => {
-          const cardCat = card.getAttribute('data-category');
-          if (category === 'all' || cardCat === category) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
-  }
-
-  // 5. Project Detail Modal Handler
-  const modal = document.getElementById('project-modal');
-  const modalClose = document.querySelector('.modal-close');
-  const viewProjectBtns = document.querySelectorAll('.btn-view-project');
-
-  if (modal) {
-    if (viewProjectBtns.length > 0) {
-      viewProjectBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.preventDefault();
-          const title = btn.getAttribute('data-title') || 'Project Overview';
-          const location = btn.getAttribute('data-location') || 'Global Site';
-          const category = btn.getAttribute('data-cat') || 'Infrastructure';
-          const budget = btn.getAttribute('data-budget') || '$120M';
-          const desc = btn.getAttribute('data-desc') || 'Comprehensive civil engineering and structural execution.';
-
-          const modalTitle = modal.querySelector('.modal-title');
-          const modalLocation = modal.querySelector('.modal-location');
-          const modalCat = modal.querySelector('.modal-category');
-          const modalBudget = modal.querySelector('.modal-budget');
-          const modalDesc = modal.querySelector('.modal-desc');
-
-          if (modalTitle) modalTitle.textContent = title;
-          if (modalLocation) modalLocation.textContent = location;
-          if (modalCat) modalCat.textContent = `// ${category.toUpperCase()}`;
-          if (modalBudget) modalBudget.textContent = budget;
-          if (modalDesc) modalDesc.textContent = desc;
-
-          modal.classList.add('open');
-          document.body.style.overflow = 'hidden';
-        });
-      });
-    }
-
-    if (modalClose) {
-      modalClose.addEventListener('click', () => {
-        modal.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    }
-
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        modal.classList.remove('open');
-        document.body.style.overflow = '';
-      }
-    });
-  }
-
-  // 6. Interactive Parametric Estimator
-  const estimatorForm = document.getElementById('cost-estimator-form');
-  if (estimatorForm) {
-    const projectType = document.getElementById('est-type');
-    const scaleSqft = document.getElementById('est-scale');
-    const scaleValDisplay = document.getElementById('est-scale-val');
-    const urgency = document.getElementById('est-urgency');
-    const leedCheck = document.getElementById('est-leed');
-    const totalCostDisplay = document.getElementById('est-total-cost');
-    const totalMonthsDisplay = document.getElementById('est-total-months');
-
-    function calculateEstimate() {
-      if (!projectType || !scaleSqft || !totalCostDisplay) return;
-
-      const baseRates = {
-        'civil': 320,
-        'commercial': 450,
-        'industrial': 380,
-        'infrastructure': 520
-      };
-
-      const baseTimelineMonths = {
-        'civil': 18,
-        'commercial': 24,
-        'industrial': 16,
-        'infrastructure': 30
-      };
-
-      const selectedType = projectType.value || 'commercial';
-      const sqft = parseInt(scaleSqft.value, 10) || 50000;
-      if (scaleValDisplay) {
-        scaleValDisplay.textContent = `${sqft.toLocaleString()} SQ. FT.`;
-      }
-
-      const baseRate = baseRates[selectedType] || 400;
-      let totalCost = (sqft * baseRate);
-
-      if (urgency && urgency.value === 'fast-track') {
-        totalCost *= 1.15;
-      }
-      if (leedCheck && leedCheck.checked) {
-        totalCost *= 1.08;
-      }
-
-      const baseMonths = baseTimelineMonths[selectedType] || 20;
-      let calculatedMonths = Math.round(baseMonths * (sqft / 100000) * 0.7 + (baseMonths * 0.5));
-      if (urgency && urgency.value === 'fast-track') {
-        calculatedMonths = Math.max(8, Math.round(calculatedMonths * 0.75));
-      }
-
-      totalCostDisplay.textContent = `$${(totalCost / 1000000).toFixed(2)}M`;
-      if (totalMonthsDisplay) {
-        totalMonthsDisplay.textContent = `${calculatedMonths} Months`;
-      }
-    }
-
-    if (projectType) projectType.addEventListener('change', calculateEstimate);
-    if (scaleSqft) scaleSqft.addEventListener('input', calculateEstimate);
-    if (urgency) urgency.addEventListener('change', calculateEstimate);
-    if (leedCheck) leedCheck.addEventListener('change', calculateEstimate);
-
-    calculateEstimate();
-  }
-
-  // 7. Request a Bid Page Form Handler
+  // 4. Request a Bid Page Form Handler
   const bidForm = document.getElementById('bid-form');
   if (bidForm) {
     bidForm.addEventListener('submit', (e) => {
@@ -292,12 +226,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (parentCard) {
         parentCard.innerHTML = `
           <div style="text-align: center; padding: 40px 20px;">
-            <svg viewBox="0 0 24 24" width="56" height="56" fill="none" stroke="#E8610A" stroke-width="2" style="margin: 0 auto 16px;">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#E8610A" stroke-width="2" style="margin: 0 auto 16px;">
               <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
               <polyline points="22 4 12 14.01 9 11.01"></polyline>
             </svg>
-            <h3 style="font-family: var(--font-display); font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px;">RFP TENDER SUBMITTED</h3>
-            <p style="color: var(--color-grey-light); font-size: 15px; max-width: 480px; margin: 0 auto;">Your bid specifications have been securely routed to our senior estimators. We will provide a formal engineering estimate within 24 hours.</p>
+            <h3 style="font-family: var(--font-display); font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 8px;">RFP TENDER SUBMITTED</h3>
+            <p style="color: var(--color-grey-light); font-size: 14px; max-width: 460px; margin: 0 auto;">Your bid specifications have been securely routed to our senior estimators. We will provide a formal engineering estimate within 24 hours.</p>
           </div>
         `;
       }

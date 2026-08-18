@@ -167,9 +167,12 @@ const PROJECTS_DATA = [
 
 document.addEventListener('DOMContentLoaded', () => {
   const projectsGrid = document.getElementById('projects-grid');
-  const filterBtns = document.querySelectorAll('.filter-btn[data-filter]');
   const modal = document.getElementById('project-modal');
-  const modalCloseBtn = document.querySelector('.modal-close');
+
+  // Initialize shared modal handlers (overlay click, escape key, focus trapping)
+  if (window.SGModal && modal) {
+    window.SGModal.init(modal);
+  }
 
   // 1. Render All Project Cards
   function renderProjects(category = 'all') {
@@ -211,31 +214,12 @@ document.addEventListener('DOMContentLoaded', () => {
       projectsGrid.appendChild(card);
     });
 
-    // Attach click handlers to View Details buttons
     attachDetailHandlers();
   }
 
-  // 2. Filter Button Clicks
-  if (filterBtns.length > 0) {
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const category = btn.getAttribute('data-filter') || 'all';
-        
-        // Smooth fade out then in
-        if (projectsGrid) {
-          projectsGrid.style.opacity = '0';
-          projectsGrid.style.transform = 'translateY(10px)';
-          setTimeout(() => {
-            renderProjects(category);
-            projectsGrid.style.opacity = '1';
-            projectsGrid.style.transform = 'translateY(0)';
-          }, 180);
-        }
-      });
-    });
+  // 2. Bind Reusable Filter Controller
+  if (window.SGFilter && projectsGrid) {
+    window.SGFilter.bind('.filter-btn-pill, .filter-btn', projectsGrid, renderProjects);
   }
 
   // 3. Project Detail Modal
@@ -243,7 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const project = PROJECTS_DATA.find(p => p.id === projectId);
     if (!project || !modal) return;
 
-    // Fill modal data
     const imgEl = modal.querySelector('.modal-img');
     const badgeEl = modal.querySelector('.modal-badge');
     const titleEl = modal.querySelector('.modal-title');
@@ -264,7 +247,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (clientEl) clientEl.textContent = project.client;
     if (descEl) descEl.textContent = project.description;
 
-    // Build Milestone Horizontal Stepper
     if (timelineEl && project.milestones) {
       timelineEl.innerHTML = '';
       project.milestones.forEach((m, index) => {
@@ -283,17 +265,9 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-
-    // Focus trap
-    if (modalCloseBtn) modalCloseBtn.focus();
-  }
-
-  function closeProjectModal() {
-    if (!modal) return;
-    modal.classList.remove('open');
-    document.body.style.overflow = '';
+    if (window.SGModal) {
+      window.SGModal.open(modal);
+    }
   }
 
   function attachDetailHandlers() {
@@ -306,46 +280,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
-
-  if (modalCloseBtn) {
-    modalCloseBtn.addEventListener('click', closeProjectModal);
-  }
-
-  if (modal) {
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeProjectModal();
-      }
-    });
-  }
-
-  // Escape key closes modal & focus trapping
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal && modal.classList.contains('open')) {
-      closeProjectModal();
-    }
-
-    // Trap focus inside modal
-    if (e.key === 'Tab' && modal && modal.classList.contains('open')) {
-      const focusableEls = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-      if (focusableEls.length > 0) {
-        const firstEl = focusableEls[0];
-        const lastEl = focusableEls[focusableEls.length - 1];
-
-        if (e.shiftKey) {
-          if (document.activeElement === firstEl) {
-            e.preventDefault();
-            lastEl.focus();
-          }
-        } else {
-          if (document.activeElement === lastEl) {
-            e.preventDefault();
-            firstEl.focus();
-          }
-        }
-      }
-    }
-  });
 
   // Initial Render
   renderProjects('all');
