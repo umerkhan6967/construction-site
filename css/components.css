@@ -1135,14 +1135,14 @@
 }
 
 /* ==========================================================================
-   Portfolio & Fleet Grid (3-Column with 1px Gap Border)
+   Portfolio & Fleet Grid (3-Column with 20px Gap)
    ========================================================================== */
 .projects-portfolio-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1px;
-  background-color: var(--color-border);
-  border: 1px solid var(--color-border);
+  gap: 20px;
+  background-color: transparent;
+  border: none;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
@@ -1160,15 +1160,18 @@
 
 .project-portfolio-card {
   background-color: var(--color-dark-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  transition: background-color var(--transition-fast);
+  transition: all var(--transition-base);
 }
 
 .project-portfolio-card:hover {
-  background-color: #202020;
+  border-color: var(--color-orange);
+  transform: translateY(-4px);
 }
 
 .project-card-media {

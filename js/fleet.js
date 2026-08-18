@@ -183,26 +183,6 @@ const FLEET_DATA = [
       "Vector Control System": "Radio remote with proportional hydraulic fine-metering",
       "Operational Best Use": "Confined urban stadium pours, foundation caps, deep structural columns"
     }
-  },
-  {
-    id: "cat-777g-dumptruck",
-    name: "CAT 777G Off-Highway Mining Truck",
-    category: "dump-trucks",
-    categoryLabel: "Dump Trucks",
-    model: "Caterpillar 777G Rigid Frame",
-    year: "2023",
-    capacity: "96.4 Metric Tons",
-    horsepower: "1,025 HP (765 kW)",
-    image: "assets/images/fleet-dumptruck.jpg",
-    specs: {
-      "Model Designation": "Caterpillar 777G Rigid Off-Highway Hauler",
-      "Nominal Payload": "96.4 Metric Tons (106.3 US Tons)",
-      "Gross Machine Weight": "164,654 kg (363,000 lbs)",
-      "Engine Unit": "Cat C32 ACERT Dual Turbocharged",
-      "Horsepower / Power": "1,025 HP (765 kW) @ 1,750 RPM",
-      "Top Speed (Loaded)": "67.1 km/h (41.7 mph)",
-      "Operational Best Use": "Mega-quarry infrastructure hauling, mass dam earthmoving transport"
-    }
   }
 ];
 
