@@ -1,41 +1,152 @@
-// SolidGround - Main Application Logic
+// SolidGround - Core Application Interactions & Controllers
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Stats Counter Animation using IntersectionObserver
-  const statNumbers = document.querySelectorAll('.stat-number[data-target]');
 
-  if (statNumbers.length > 0) {
-    const observer = new IntersectionObserver((entries, obs) => {
+  // 1. Scroll-Triggered Fade-In Reveal Observer
+  const reveals = document.querySelectorAll('.reveal-on-scroll');
+  if (reveals.length > 0 && 'IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.15,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    reveals.forEach(el => revealObserver.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('is-revealed'));
+  }
+
+  // 2. Stats Counter Animation on Scroll
+  const statNumbers = document.querySelectorAll('.stat-num[data-target]');
+  if (statNumbers.length > 0 && 'IntersectionObserver' in window) {
+    const statObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const el = entry.target;
-          const target = parseFloat(el.getAttribute('data-target'));
-          const prefix = el.getAttribute('data-prefix') || '';
+          const target = parseInt(el.getAttribute('data-target'), 10) || 0;
           const suffix = el.getAttribute('data-suffix') || '';
-          const isDecimal = target % 1 !== 0;
-          let count = 0;
-          const duration = 1500;
-          const stepTime = 20;
-          const totalSteps = duration / stepTime;
-          const increment = target / totalSteps;
+          const duration = 1600; // 1.6s
+          const startTime = performance.now();
 
-          const timer = setInterval(() => {
-            count += increment;
-            if (count >= target) {
-              count = target;
-              clearInterval(timer);
+          function updateCounter(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out cubic
+            const easeProgress = 1 - Math.pow(1 - progress, 3);
+            const currentVal = Math.floor(easeProgress * target);
+
+            el.textContent = `${currentVal}${suffix}`;
+
+            if (progress < 1) {
+              requestAnimationFrame(updateCounter);
+            } else {
+              el.textContent = `${target}${suffix}`;
             }
-            el.innerHTML = `${prefix}${isDecimal ? count.toFixed(2) : Math.floor(count)}<span class="accent">${suffix}</span>`;
-          }, stepTime);
+          }
 
-          obs.unobserve(el);
+          requestAnimationFrame(updateCounter);
+          observer.unobserve(el);
         }
       });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.4 });
 
-    statNumbers.forEach(stat => observer.observe(stat));
+    statNumbers.forEach(stat => statObserver.observe(stat));
   }
 
-  // 2. Project Filter Buttons
+  // 3. Home & RFQ Contact Form Interactive Validation
+  const contactForm = document.getElementById('home-contact-form');
+  if (contactForm) {
+    const formFields = {
+      name: document.getElementById('contact-name'),
+      company: document.getElementById('contact-company'),
+      email: document.getElementById('contact-email'),
+      phone: document.getElementById('contact-phone'),
+      message: document.getElementById('contact-message')
+    };
+
+    const successBox = document.getElementById('contact-success-box');
+
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+    }
+
+    function setFieldError(input, msg) {
+      if (!input) return;
+      const group = input.closest('.form-group-minimal') || input.parentElement;
+      if (group) {
+        group.classList.add('error');
+        const errorEl = group.querySelector('.form-error-msg');
+        if (errorEl) errorEl.textContent = msg;
+      }
+    }
+
+    function clearFieldError(input) {
+      if (!input) return;
+      const group = input.closest('.form-group-minimal') || input.parentElement;
+      if (group) {
+        group.classList.remove('error');
+      }
+    }
+
+    // Clear error on input
+    Object.values(formFields).forEach(input => {
+      if (input) {
+        input.addEventListener('input', () => clearFieldError(input));
+      }
+    });
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let isValid = true;
+
+      // Validate Name
+      if (formFields.name && formFields.name.value.trim().length < 2) {
+        setFieldError(formFields.name, 'Please enter your full name');
+        isValid = false;
+      }
+
+      // Validate Company
+      if (formFields.company && formFields.company.value.trim().length < 2) {
+        setFieldError(formFields.company, 'Please enter company or organization');
+        isValid = false;
+      }
+
+      // Validate Email
+      if (formFields.email && !validateEmail(formFields.email.value)) {
+        setFieldError(formFields.email, 'Please provide a valid work email address');
+        isValid = false;
+      }
+
+      // Validate Phone
+      if (formFields.phone && formFields.phone.value.trim().length < 7) {
+        setFieldError(formFields.phone, 'Please enter a valid contact phone number');
+        isValid = false;
+      }
+
+      // Validate Message
+      if (formFields.message && formFields.message.value.trim().length < 10) {
+        setFieldError(formFields.message, 'Please provide project details (minimum 10 characters)');
+        isValid = false;
+      }
+
+      if (isValid) {
+        // Success state
+        contactForm.style.display = 'none';
+        if (successBox) {
+          successBox.style.display = 'block';
+          successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    });
+  }
+
+  // 4. Project Filter Bar (Projects Page)
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card[data-category]');
 
@@ -59,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. Project Detail Modal
+  // 5. Project Detail Modal Handler
   const modal = document.getElementById('project-modal');
   const modalClose = document.querySelector('.modal-close');
   const viewProjectBtns = document.querySelectorAll('.btn-view-project');
@@ -83,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
           if (modalTitle) modalTitle.textContent = title;
           if (modalLocation) modalLocation.textContent = location;
-          if (modalCat) modalCat.textContent = category;
+          if (modalCat) modalCat.textContent = `// ${category.toUpperCase()}`;
           if (modalBudget) modalBudget.textContent = budget;
           if (modalDesc) modalDesc.textContent = desc;
 
@@ -108,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Interactive Project Estimator
+  // 6. Interactive Parametric Estimator
   const estimatorForm = document.getElementById('cost-estimator-form');
   if (estimatorForm) {
     const projectType = document.getElementById('est-type');

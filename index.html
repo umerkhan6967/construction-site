@@ -35,12 +35,12 @@
       </a>
 
       <nav class="nav-menu">
-        <a href="index.html" class="nav-link">HOME</a>
-        <a href="index.html#about" class="nav-link">ABOUT US</a>
+        <a href="index.html" class="nav-link active">HOME</a>
+        <a href="#about" class="nav-link">ABOUT US</a>
         <a href="capabilities.html" class="nav-link">SERVICES</a>
         <a href="projects.html" class="nav-link">PROJECTS</a>
-        <a href="index.html#safety" class="nav-link">SAFETY</a>
-        <a href="index.html#careers" class="nav-link">CAREERS</a>
+        <a href="#safety" class="nav-link">SAFETY</a>
+        <a href="#careers" class="nav-link">CAREERS</a>
         <a href="request-a-bid.html" class="nav-link">CONTACT</a>
       </nav>
 
@@ -67,33 +67,450 @@
       <span><span class="brand-solid">SOLID</span><span class="brand-ground">GROUND</span></span>
     </a>
     <nav class="mobile-nav-links">
-      <a href="index.html" class="nav-link">HOME</a>
-      <a href="index.html#about" class="nav-link">ABOUT US</a>
+      <a href="index.html" class="nav-link active">HOME</a>
+      <a href="#about" class="nav-link">ABOUT US</a>
       <a href="capabilities.html" class="nav-link">SERVICES</a>
       <a href="projects.html" class="nav-link">PROJECTS</a>
-      <a href="index.html#safety" class="nav-link">SAFETY</a>
-      <a href="index.html#careers" class="nav-link">CAREERS</a>
+      <a href="#safety" class="nav-link">SAFETY</a>
+      <a href="#careers" class="nav-link">CAREERS</a>
       <a href="request-a-bid.html" class="nav-link">CONTACT</a>
     </nav>
     <a href="request-a-bid.html" class="btn btn-primary" style="width: 100%; max-width: 280px; text-align: center;">GET A QUOTE</a>
   </div>
 
-  <!-- Main Content Shell -->
+  <!-- Main Content -->
   <main id="main-content">
-    <!-- Hero Section -->
-    <section class="section section-dark hero-section">
-      <div class="container">
-        <span class="eyebrow">// MASTER BUILDERS & CIVIL ENGINEERING</span>
-        <h1 class="section-title" style="margin-top: 12px; margin-bottom: 20px;">BUILT TO ENDURE. ENGINEERED TO LEAD.</h1>
-        <p style="max-width: 640px; margin-bottom: var(--space-lg); font-size: 1.1rem; color: var(--color-grey-light);">
-          Delivering landmark heavy civil infrastructure, deep structural foundations, and iconic commercial towers worldwide with zero safety compromises.
+
+    <!-- SECTION 1 — HERO -->
+    <section class="hero-section" id="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-container">
+        <div class="hero-eyebrow-wrapper reveal-on-scroll">
+          <span class="eyebrow-rule"></span>
+          <span class="eyebrow">// HEAVY CONSTRUCTION. SOLID FUTURES.</span>
+        </div>
+        
+        <h1 class="hero-headline reveal-on-scroll reveal-delay-1">
+          <span class="line-1">WE BUILD</span>
+          <span class="line-2">WHAT MATTERS</span>
+        </h1>
+
+        <p class="hero-subtext reveal-on-scroll reveal-delay-2">
+          From complex high-rise towers to critical transport infrastructure, SolidGround engineers monumental structures with precision, innovation, and an unwavering commitment to safety.
         </p>
-        <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap;">
-          <a href="projects.html" class="btn btn-primary">EXPLORE PROJECTS</a>
-          <a href="capabilities.html" class="btn btn-outline">OUR CAPABILITIES</a>
+
+        <div class="hero-actions reveal-on-scroll reveal-delay-3">
+          <a href="capabilities.html" class="btn btn-primary">OUR SERVICES</a>
+          <a href="projects.html" class="btn btn-outline">VIEW PROJECTS</a>
+        </div>
+      </div>
+
+      <!-- Slide Indicator Dots -->
+      <div class="hero-dots" aria-hidden="true">
+        <span class="hero-dot active"></span>
+        <span class="hero-dot"></span>
+        <span class="hero-dot"></span>
+      </div>
+    </section>
+
+
+    <!-- SECTION 2 — SERVICES ("WHAT WE DO / OUR SERVICES") -->
+    <section class="section section-dark-2" id="services">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header reveal-on-scroll">
+          <div class="section-header-left">
+            <span class="eyebrow">// WHAT WE DO</span>
+            <h2 class="section-title">OUR SERVICES</h2>
+          </div>
+          <div class="section-header-right">
+            <p>
+              Delivering full-lifecycle civil, structural, and industrial construction services backed by advanced engineering modeling and proprietary fleet logistics.
+            </p>
+            <a href="capabilities.html" class="view-all-link">VIEW ALL SERVICES →</a>
+          </div>
+        </div>
+
+        <!-- 6-Column Service Icon Grid -->
+        <div class="services-grid-6">
+          
+          <!-- 1. Heavy Construction -->
+          <div class="service-card-compact reveal-on-scroll reveal-delay-1">
+            <div class="service-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="21" width="18" height="2"></rect>
+                <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"></path>
+                <path d="M9 7h1"></path>
+                <path d="M9 11h1"></path>
+                <path d="M9 15h1"></path>
+                <path d="M14 7h1"></path>
+                <path d="M14 11h1"></path>
+                <path d="M14 15h1"></path>
+              </svg>
+            </div>
+            <h3>Heavy Construction</h3>
+            <p>High-capacity commercial towers, civic facilities, and superstructures built with rigorous precision.</p>
+          </div>
+
+          <!-- 2. Infrastructure -->
+          <div class="service-card-compact reveal-on-scroll reveal-delay-2">
+            <div class="service-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19 8 5"></path>
+                <path d="M16 5l4 14"></path>
+                <path d="M12 8v-2"></path>
+                <path d="M12 13v-2"></path>
+                <path d="M12 18v-2"></path>
+              </svg>
+            </div>
+            <h3>Infrastructure</h3>
+            <p>Highways, bridge viaducts, transit corridors, and deep foundation marine engineering works.</p>
+          </div>
+
+          <!-- 3. Earthwork -->
+          <div class="service-card-compact reveal-on-scroll reveal-delay-3">
+            <div class="service-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 17v-4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4"></path>
+                <circle cx="5" cy="18" r="3"></circle>
+                <circle cx="13" cy="18" r="3"></circle>
+                <path d="M16 18h6l-2-6h-4"></path>
+                <path d="M7 11V6a1 1 0 0 1 1-1h4"></path>
+              </svg>
+            </div>
+            <h3>Earthwork</h3>
+            <p>Mass excavation, GPS-guided grading, soil stabilization, and large-scale site preparation.</p>
+          </div>
+
+          <!-- 4. Concrete Work -->
+          <div class="service-card-compact reveal-on-scroll reveal-delay-1">
+            <div class="service-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path>
+                <path d="m3.3 7 8.7 5 8.7-5"></path>
+                <path d="M12 22V12"></path>
+              </svg>
+            </div>
+            <h3>Concrete Work</h3>
+            <p>High-strength architectural concrete, post-tensioned slabs, and foundation mat pours.</p>
+          </div>
+
+          <!-- 5. Steel Structures -->
+          <div class="service-card-compact reveal-on-scroll reveal-delay-2">
+            <div class="service-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 21h12"></path>
+                <path d="M9 21V9"></path>
+                <path d="M15 21V9"></path>
+                <path d="M6 9h12"></path>
+                <path d="M6 3h12"></path>
+                <path d="M9 9 15 3"></path>
+                <path d="M9 3l6 6"></path>
+                <path d="M9 15l6-6"></path>
+                <path d="M9 9l6 6"></path>
+                <path d="M9 21l6-6"></path>
+                <path d="M9 15l6 6"></path>
+              </svg>
+            </div>
+            <h3>Steel Structures</h3>
+            <p>Heavy structural steel erection, long-span roof trusses, and modular industrial frameworks.</p>
+          </div>
+
+          <!-- 6. Project Management -->
+          <div class="service-card-compact reveal-on-scroll reveal-delay-3">
+            <div class="service-icon-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"></path>
+                <rect x="9" y="3" width="6" height="4" rx="2"></rect>
+                <path d="m9 14 2 2 4-4"></path>
+              </svg>
+            </div>
+            <h3>Project Management</h3>
+            <p>Turnkey EPC delivery, BIM 4D schedule tracking, cost control, and quality assurance.</p>
+          </div>
+
         </div>
       </div>
     </section>
+
+
+    <!-- SECTION 3 — STATS BAR -->
+    <section class="stats-strip" id="stats">
+      <div class="container">
+        <div class="stats-grid-4">
+          
+          <!-- Stat 1 -->
+          <div class="stat-item reveal-on-scroll">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-num" data-target="25" data-suffix="+">0+</div>
+              <div class="stat-lbl">YEARS OF EXPERIENCE</div>
+            </div>
+          </div>
+
+          <!-- Stat 2 -->
+          <div class="stat-item reveal-on-scroll reveal-delay-1">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              </svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-num" data-target="650" data-suffix="+">0+</div>
+              <div class="stat-lbl">PROJECTS COMPLETED</div>
+            </div>
+          </div>
+
+          <!-- Stat 3 -->
+          <div class="stat-item reveal-on-scroll reveal-delay-2">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-num" data-target="1200" data-suffix="+">0+</div>
+              <div class="stat-lbl">SKILLED PROFESSIONALS</div>
+            </div>
+          </div>
+
+          <!-- Stat 4 -->
+          <div class="stat-item reveal-on-scroll reveal-delay-3">
+            <div class="stat-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+            </div>
+            <div class="stat-content">
+              <div class="stat-num" data-target="100" data-suffix="%">0%</div>
+              <div class="stat-lbl">SAFETY COMMITMENT</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 4 — PROJECTS ("RECENT PROJECTS / BUILT TO LAST") -->
+    <section class="section section-dark" id="projects">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header reveal-on-scroll">
+          <div class="section-header-left">
+            <span class="eyebrow">// RECENT PROJECTS</span>
+            <h2 class="section-title">BUILT TO LAST</h2>
+          </div>
+          <div class="section-header-right">
+            <p>
+              Landmark infrastructure, manufacturing complexes, and civic arenas engineered to withstand extreme loads and endure for generations.
+            </p>
+            <a href="projects.html" class="view-all-link">VIEW ALL PROJECTS →</a>
+          </div>
+        </div>
+
+        <!-- 3-Column Project Card Grid -->
+        <div class="projects-grid-3">
+          
+          <!-- Project 1: Riverfront Bridge -->
+          <div class="project-card-home reveal-on-scroll reveal-delay-1">
+            <div class="project-media-wrap">
+              <img src="assets/images/project-bridge.jpg" alt="Riverfront Bridge suspension infrastructure" loading="lazy">
+              <div class="project-tag-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 19 8 5"></path><path d="M16 5l4 14"></path>
+                </svg>
+                CIVIL
+              </div>
+            </div>
+            <div class="project-info-row">
+              <div class="project-info-text">
+                <h3>Riverfront Bridge</h3>
+                <span class="category">Civil Infrastructure</span>
+              </div>
+              <a href="projects.html" class="circle-arrow-btn" aria-label="View Riverfront Bridge details">→</a>
+            </div>
+          </div>
+
+          <!-- Project 2: Northpoint Industrial Plant -->
+          <div class="project-card-home reveal-on-scroll reveal-delay-2">
+            <div class="project-media-wrap">
+              <img src="assets/images/project-industrial.jpg" alt="Northpoint Industrial Plant manufacturing facility" loading="lazy">
+              <div class="project-tag-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="7" width="20" height="14" rx="2"></rect>
+                </svg>
+                INDUSTRIAL
+              </div>
+            </div>
+            <div class="project-info-row">
+              <div class="project-info-text">
+                <h3>Northpoint Industrial Plant</h3>
+                <span class="category">Industrial Construction</span>
+              </div>
+              <a href="projects.html" class="circle-arrow-btn" aria-label="View Northpoint Industrial details">→</a>
+            </div>
+          </div>
+
+          <!-- Project 3: Unity Arena -->
+          <div class="project-card-home reveal-on-scroll reveal-delay-3">
+            <div class="project-media-wrap">
+              <img src="assets/images/project-arena.jpg" alt="Unity Arena sports and entertainment stadium" loading="lazy">
+              <div class="project-tag-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"></path>
+                </svg>
+                COMMERCIAL
+              </div>
+            </div>
+            <div class="project-info-row">
+              <div class="project-info-text">
+                <h3>Unity Arena</h3>
+                <span class="category">Commercial Construction</span>
+              </div>
+              <a href="projects.html" class="circle-arrow-btn" aria-label="View Unity Arena details">→</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 5 — TESTIMONIALS ("TRUSTED BY OUR CLIENTS") -->
+    <section class="section section-dark-2" id="about">
+      <div class="container">
+        <div class="testimonials-wrapper">
+          
+          <!-- Left Column (35%) -->
+          <div class="testimonials-left reveal-on-scroll">
+            <span class="eyebrow">// TESTIMONIALS</span>
+            <h2 class="section-title">TRUSTED BY OUR CLIENTS</h2>
+            <p style="margin-top: 16px; color: var(--color-grey-light); font-size: 15px; line-height: 1.7;">
+              Our reputation is forged on uncompromising structural integrity, transparent milestone tracking, and turnkey delivery on the most demanding jobsites.
+            </p>
+          </div>
+
+          <!-- Right Column (65%) - 2 Cards -->
+          <div class="testimonials-right">
+            
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card reveal-on-scroll reveal-delay-1">
+              <div>
+                <span class="quote-mark" aria-hidden="true">❝</span>
+                <p class="quote-text">
+                  SolidGround delivered our 48-story commercial tower two months ahead of schedule with zero safety incidents. Their structural engineering team solved foundation challenges that other contractors claimed were impossible.
+                </p>
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar">JT</div>
+                <div class="author-info">
+                  <div class="name">James Thornton</div>
+                  <div class="role">Project Director, Skyline Group</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card reveal-on-scroll reveal-delay-2">
+              <div>
+                <span class="quote-mark" aria-hidden="true">❝</span>
+                <p class="quote-text">
+                  Their heavy civil capabilities and precision project management make them our primary partner for regional infrastructure corridors. SolidGround sets the industry benchmark for speed, quality, and fiscal discipline.
+                </p>
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar">SM</div>
+                <div class="author-info">
+                  <div class="name">Sarah Mitchell</div>
+                  <div class="role">Operations Manager, Metro Developers</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 6 — CONTACT / CTA + FORM -->
+    <section class="section contact-cta-section" id="contact">
+      <div class="contact-split-wrap">
+        
+        <!-- Left Column (40% - Orange Background) -->
+        <div class="contact-split-left reveal-on-scroll">
+          <span class="eyebrow-dark">// LET'S BUILD TOGETHER</span>
+          <h2 class="section-title-dark">READY TO START YOUR PROJECT?</h2>
+          <div class="rule-dark"></div>
+          <p>
+            Connect with our senior engineering estimators to discuss your upcoming project scope, feasibility study, or procurement RFP. We provide comprehensive bid packages within 48 hours.
+          </p>
+        </div>
+
+        <!-- Right Column (60% - Dark-2 Background) -->
+        <div class="contact-split-right reveal-on-scroll reveal-delay-1">
+          
+          <form id="home-contact-form" novalidate>
+            <!-- 2x2 Grid -->
+            <div class="input-grid-2x2">
+              <div class="form-group-minimal">
+                <input type="text" id="contact-name" class="form-input-minimal" placeholder="Full Name *" required>
+                <div class="form-error-msg">Please enter your full name</div>
+              </div>
+
+              <div class="form-group-minimal">
+                <input type="text" id="contact-company" class="form-input-minimal" placeholder="Company Name *" required>
+                <div class="form-error-msg">Please enter company name</div>
+              </div>
+
+              <div class="form-group-minimal">
+                <input type="email" id="contact-email" class="form-input-minimal" placeholder="Email Address *" required>
+                <div class="form-error-msg">Please provide a valid work email</div>
+              </div>
+
+              <div class="form-group-minimal">
+                <input type="tel" id="contact-phone" class="form-input-minimal" placeholder="Phone Number *" required>
+                <div class="form-error-msg">Please enter phone number</div>
+              </div>
+            </div>
+
+            <!-- Full-width Textarea -->
+            <div class="form-group-minimal">
+              <textarea id="contact-message" class="form-textarea-minimal" placeholder="Tell us about your project scope, location, and timeline... *" required></textarea>
+              <div class="form-error-msg">Please describe your project scope (min 10 characters)</div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary" style="width: 100%;">SEND MESSAGE</button>
+          </form>
+
+          <!-- Confirmation Success Box -->
+          <div id="contact-success-box" class="form-success-box">
+            <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="#E8610A" stroke-width="2" style="margin: 0 auto 12px;">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <h3>MESSAGE RECEIVED</h3>
+            <p>Thank you for contacting SolidGround. A senior engineering estimator will review your specifications and reach out within 24 hours.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
   <!-- Site Footer -->
@@ -146,11 +563,11 @@
         <div class="footer-col">
           <span class="eyebrow" style="margin-bottom: var(--space-sm);">// QUICK LINKS</span>
           <ul class="footer-links">
-            <li><a href="index.html#about">About Us</a></li>
+            <li><a href="#about">About Us</a></li>
             <li><a href="capabilities.html">Services</a></li>
             <li><a href="projects.html">Projects</a></li>
-            <li><a href="index.html#safety">Safety</a></li>
-            <li><a href="index.html#careers">Careers</a></li>
+            <li><a href="#safety">Safety</a></li>
+            <li><a href="#careers">Careers</a></li>
             <li><a href="request-a-bid.html">Contact</a></li>
           </ul>
         </div>
