@@ -1,0 +1,33 @@
+:root {
+  /* Colors */
+  --color-dark: #0D0D0D;
+  --color-dark-2: #1A1A1A;
+  --color-dark-3: #232323;
+  --color-orange: #E8610A;
+  --color-orange-hover: #FF7A1F;
+  --color-white: #FFFFFF;
+  --color-grey: #A0A0A0;
+  --color-grey-light: #CCCCCC;
+  --color-border: #2A2A2A;
+
+  /* Typography */
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Spacing scale (8px base) */
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 64px;
+  --space-2xl: 96px;
+  --space-3xl: 128px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+
+  /* Border radius — sharp, industrial */
+  --radius-sm: 4px;
+  --radius-btn: 0px;
+}

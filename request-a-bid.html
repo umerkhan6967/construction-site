@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request a Bid & RFQ | SolidGround Infrastructure & Construction</title>
+  <meta name="description" content="Submit your tender documents, request an engineering estimate, or initiate pre-construction planning with SolidGround.">
+  
+  <!-- Design System CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+  <!-- Page Loader -->
+  <div id="page-loader" class="page-loader">
+    <div class="loader-spinner"></div>
+    <div class="loader-text">SolidGround // Loading RFQ Portal</div>
+  </div>
+
+  <!-- Site Top Bar -->
+  <div class="site-topbar">
+    <div class="container topbar-inner">
+      <div class="topbar-meta">
+        <span class="topbar-item"><span class="pulse-dot"></span> <span class="highlight">BID DESK:</span> Fast-Track RFP Response Within 24 Hours</span>
+      </div>
+      <div class="topbar-meta">
+        <span class="topbar-item">Direct Tender Line: <span class="highlight">+1 (800) 555-SOLID</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-mark">SG</div>
+        <span>SOLID<span class="sub">GROUND</span></span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="capabilities.html" class="nav-link">Capabilities</a>
+        <a href="fleet.html" class="nav-link">Fleet & Tech</a>
+        <a href="request-a-bid.html" class="nav-link">Request a Bid</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="request-a-bid.html" class="btn btn-primary">Request a Bid</a>
+        <button class="nav-toggle" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="nav-backdrop"></div>
+  <div class="mobile-nav">
+    <button class="mobile-nav-close" aria-label="Close Menu">✕</button>
+    <div class="brand-logo">
+      <div class="logo-mark">SG</div>
+      <span>SOLID<span class="sub">GROUND</span></span>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="capabilities.html" class="nav-link">Capabilities</a>
+      <a href="fleet.html" class="nav-link">Fleet & Tech</a>
+      <a href="request-a-bid.html" class="nav-link">Request a Bid</a>
+    </nav>
+    <a href="request-a-bid.html" class="btn btn-primary" style="width: 100%; text-align: center;">Request a Bid</a>
+  </div>
+
+  <!-- Main Content Shell -->
+  <main id="main-content">
+    <!-- Page Header -->
+    <header class="page-header">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="sep">/</span>
+          <span>Request a Bid</span>
+        </div>
+        <span class="eyebrow">// PROCUREMENT & RFQ PORTAL</span>
+        <h1 class="section-title">INITIATE YOUR PROJECT RFP / BID SUBMISSION</h1>
+        <p style="max-width: 600px; margin-top: var(--space-xs);">Submit engineering specifications, RFP documents, or request an initial pre-construction feasibility consultation.</p>
+      </div>
+    </header>
+
+    <!-- RFQ Form Section Shell -->
+    <section class="section section-dark">
+      <div class="container">
+        <div class="grid grid-2">
+          <!-- Form Section Shell -->
+          <div class="card">
+            <h3 style="margin-bottom: var(--space-md);">Tender & Bid Specifications</h3>
+            <form id="bid-form">
+              <div class="form-group">
+                <label class="form-label" for="client-name">Organization / Entity Name <span class="req">*</span></label>
+                <input type="text" id="client-name" class="form-control" placeholder="e.g. Metro Transit Authority / Apex Development" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="client-email">Procurement Email <span class="req">*</span></label>
+                <input type="email" id="client-email" class="form-control" placeholder="contact@organization.gov" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="project-scope">Project Category & Scope <span class="req">*</span></label>
+                <select id="project-scope" class="form-control" required>
+                  <option value="">Select Project Type</option>
+                  <option value="infrastructure">Heavy Civil & Infrastructure</option>
+                  <option value="commercial">Commercial High-Rise / Tower</option>
+                  <option value="industrial">Industrial Complex / Facility</option>
+                  <option value="energy">Renewable & Energy Infrastructure</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="project-budget">Estimated Contract Budget</label>
+                <select id="project-budget" class="form-control">
+                  <option value="10-50m">$10M – $50M</option>
+                  <option value="50-150m">$50M – $150M</option>
+                  <option value="150-500m">$150M – $500M</option>
+                  <option value="500m+">$500M+ (Mega-Project)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="project-desc">Scope Description & Milestones</label>
+                <textarea id="project-desc" class="form-control" placeholder="Describe key deliverables, timeline constraints, site location, and geotechnical notes..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">Submit RFP For Engineering Review</button>
+            </form>
+          </div>
+
+          <!-- Contact Details / Guarantees -->
+          <div>
+            <div class="card" style="margin-bottom: var(--space-md);">
+              <span class="eyebrow">// DIRECT CONTACT</span>
+              <h3 style="margin-top: 6px; margin-bottom: var(--space-sm);">Global Bidding Desks</h3>
+              <p style="margin-bottom: var(--space-md);">For urgent public tenders, joint venture proposals, or emergency infrastructure response, contact our senior estimators directly.</p>
+              
+              <div style="display: flex; flex-direction: column; gap: var(--space-sm);">
+                <div>
+                  <div style="font-size: 12px; color: var(--color-grey); text-transform: uppercase;">Americas Tender Office</div>
+                  <div style="font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--color-white);">+1 (212) 555-0199 // ny.bids@solidground.build</div>
+                </div>
+                <div>
+                  <div style="font-size: 12px; color: var(--color-grey); text-transform: uppercase;">EMEA & Middle East Desk</div>
+                  <div style="font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--color-white);">+971 4 555 0188 // emea.bids@solidground.build</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-box">
+              <div class="stat-number">100<span class="accent">%</span></div>
+              <div class="stat-label">Bonding & Insurance Capacity Up To $2.5B</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: var(--space-sm);">
+            <div class="logo-mark">SG</div>
+            <span>SOLID<span class="sub">GROUND</span></span>
+          </div>
+          <p>Global leader in heavy civil engineering, complex skyscraper superstructures, and critical public infrastructure delivery.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects Portfolio</a></li>
+            <li><a href="capabilities.html">Capabilities</a></li>
+            <li><a href="fleet.html">Equipment Fleet</a></li>
+            <li><a href="request-a-bid.html">Request a Bid</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Capabilities</h4>
+          <ul>
+            <li><a href="capabilities.html">Heavy Civil Infrastructure</a></li>
+            <li><a href="capabilities.html">Commercial Superstructures</a></li>
+            <li><a href="capabilities.html">BIM 4D & Virtual Engineering</a></li>
+            <li><a href="capabilities.html">Renewable Energy Complexes</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Headquarters</h4>
+          <p style="margin-bottom: 8px;">SolidGround Tower, 450 Lexington Ave<br>New York, NY 10017</p>
+          <p>Direct: <span style="color: var(--color-orange);">+1 (212) 555-0199</span><br>Email: <span style="color: var(--color-white);">bids@solidground.build</span></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 SolidGround Infrastructure & Construction Inc. All rights reserved.</span>
+        <span>OSHA Platinum Certified // ISO 9001:2015 // LEED Gold Partner</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/loader.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
