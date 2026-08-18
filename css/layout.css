@@ -1,11 +1,22 @@
-/* Container & General Layout */
+/* ==========================================================================
+   SolidGround Design System — Responsive Layout & Grid CSS
+   ========================================================================== */
+
+/* Container & Layout Constraints */
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 24px;
   padding-right: 24px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 
 .container-fluid {
@@ -14,11 +25,32 @@
   padding-right: 24px;
 }
 
+@media (max-width: 768px) {
+  .container-fluid {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
 /* Alternating Section Backgrounds */
 .section {
-  padding-top: 72px;
-  padding-bottom: 72px;
+  padding-top: 80px;
+  padding-bottom: 80px;
   position: relative;
+}
+
+@media (max-width: 992px) {
+  .section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+@media (max-width: 576px) {
+  .section {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
 }
 
 .section-dark {
@@ -71,10 +103,10 @@
   line-height: 1.6;
 }
 
-/* Grids */
+/* Generic Grids */
 .grid {
   display: grid;
-  gap: var(--space-md);
+  gap: 20px;
 }
 
 .grid-2 {
@@ -89,7 +121,7 @@
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 600px) {
   .grid-2 {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -98,7 +130,7 @@
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
   .grid-3 {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -173,7 +205,7 @@
 .nav-menu {
   display: none;
   align-items: center;
-  gap: 28px;
+  gap: 24px;
 }
 
 @media (min-width: 1024px) {
@@ -302,7 +334,7 @@
 
 .mobile-nav-links .nav-link {
   font-family: var(--font-display);
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   letter-spacing: 2px;
   color: var(--color-grey-light);
@@ -343,7 +375,7 @@ body {
   margin-bottom: var(--space-xl);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 600px) {
   .footer-top {
     grid-template-columns: repeat(2, 1fr);
   }

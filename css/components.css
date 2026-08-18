@@ -39,7 +39,7 @@
 .hero-section {
   position: relative;
   height: calc(100vh - 80px);
-  min-height: 540px;
+  min-height: 520px;
   max-height: 800px;
   background-image: url('../assets/images/hero-construction.jpg');
   background-size: cover;
@@ -51,10 +51,17 @@
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .hero-section {
+    height: 80vh;
+    min-height: 480px;
+  }
+}
+
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.65) 50%, rgba(0, 0, 0, 0.35) 100%);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.90) 0%, rgba(0, 0, 0, 0.70) 50%, rgba(0, 0, 0, 0.40) 100%);
   z-index: 1;
 }
 
@@ -62,9 +69,15 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 48px 24px 60px;
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    padding: 32px 16px 48px;
+  }
 }
 
 .hero-eyebrow-wrapper {
@@ -85,7 +98,7 @@
 .hero-headline {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(42px, 6.5vw, 76px);
+  font-size: clamp(32px, 7vw, 76px);
   line-height: 0.95;
   text-transform: uppercase;
   letter-spacing: -1px;
@@ -183,7 +196,7 @@
 }
 
 /* ==========================================================================
-   Section 2 — Services Grid (6 Columns)
+   Section 2 — Services Grid (Responsive 6-col to 1-col)
    ========================================================================== */
 .view-all-link {
   font-family: var(--font-display);
@@ -207,11 +220,17 @@
 
 .services-grid-6 {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 600px) {
+  .services-grid-6 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
   .services-grid-6 {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -274,7 +293,7 @@
 }
 
 /* ==========================================================================
-   Section 3 — Stats Bar (Orange Background)
+   Section 3 — Stats Bar (Orange Background Full Width)
    ========================================================================== */
 .stats-strip {
   background-color: var(--color-orange);
@@ -282,6 +301,7 @@
   padding: 40px 0;
   position: relative;
   z-index: 5;
+  width: 100%;
 }
 
 .stats-grid-4 {
@@ -290,7 +310,7 @@
   gap: var(--space-md);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 600px) {
   .stats-grid-4 {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -370,7 +390,13 @@
   gap: 20px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
+  .projects-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
   .projects-grid-3 {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -569,7 +595,7 @@
 }
 
 /* ==========================================================================
-   Section 6 — Contact / CTA Split Form
+   Section 6 — Contact / CTA Split Form (Home Page)
    ========================================================================== */
 .contact-cta-section {
   padding: 0;
@@ -594,6 +620,12 @@
   flex-direction: column;
   justify-content: center;
   color: #0D0D0D;
+}
+
+@media (max-width: 768px) {
+  .contact-split-left {
+    padding: 36px 20px;
+  }
 }
 
 .contact-split-left .eyebrow-dark {
@@ -634,6 +666,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .contact-split-right {
+    padding: 36px 20px;
+  }
 }
 
 .input-grid-2x2 {
@@ -890,6 +928,7 @@
   background-color: var(--color-orange);
   padding: 48px 0;
   color: var(--color-white);
+  width: 100%;
 }
 
 .safety-grid-4 {
@@ -899,7 +938,7 @@
   margin-bottom: var(--space-lg);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 600px) {
   .safety-grid-4 {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -992,7 +1031,7 @@
   gap: var(--space-md);
 }
 
-@media (min-width: 640px) {
+@media (min-width: 600px) {
   .cert-grid-6 {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1082,7 +1121,13 @@
   gap: 20px;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 640px) {
+  .testimonials-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
   .testimonials-grid-3 {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1186,7 +1231,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .project-portfolio-card:hover .project-card-media img {
@@ -1249,7 +1294,7 @@
 }
 
 /* ==========================================================================
-   Modals (Project Detail & Machinery Spec Table)
+   Modals (Project Detail & Machinery Spec Table) - Responsive
    ========================================================================== */
 .modal-overlay {
   position: fixed;
@@ -1260,7 +1305,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-md);
+  padding: 16px;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -1285,6 +1330,12 @@
   padding: 32px;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
   animation: slideUp 0.3s ease forwards;
+}
+
+@media (max-width: 576px) {
+  .modal-container {
+    padding: 20px;
+  }
 }
 
 .modal-close {
@@ -1315,14 +1366,27 @@
   border: 1px solid var(--color-border);
 }
 
+@media (max-width: 576px) {
+  .modal-img,
+  .modal-spec-img {
+    height: 180px;
+  }
+}
+
 .modal-meta-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: var(--space-sm);
   background-color: var(--color-dark-3);
   border: 1px solid var(--color-border);
   padding: 10px 14px;
   margin: var(--space-md) 0;
+}
+
+@media (min-width: 480px) {
+  .modal-meta-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .modal-meta-item .lbl {
@@ -1483,11 +1547,11 @@
 }
 
 /* ==========================================================================
-   Request a Bid Page Two-Column Layout & Form Components
+   Request a Bid Page Two-Column Layout & Form Components (Responsive)
    ========================================================================== */
 .bid-split-layout {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   overflow: hidden;
@@ -1495,26 +1559,47 @@
 
 @media (min-width: 992px) {
   .bid-split-layout {
+    display: grid;
     grid-template-columns: 35% 65%;
+  }
+}
+
+/* On mobile/tablet: form (right column) comes first */
+.bid-right-col {
+  background-color: var(--color-dark);
+  padding: 48px 36px;
+  order: 1;
+}
+
+@media (max-width: 768px) {
+  .bid-right-col {
+    padding: 32px 20px;
   }
 }
 
 .bid-left-col {
   background-color: var(--color-dark-2);
   padding: 48px 36px;
-  border-bottom: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-border);
+  order: 2;
 }
 
 @media (min-width: 992px) {
   .bid-left-col {
-    border-bottom: none;
+    border-top: none;
     border-right: 1px solid var(--color-border);
+    order: 1;
+  }
+
+  .bid-right-col {
+    order: 2;
   }
 }
 
-.bid-right-col {
-  background-color: var(--color-dark);
-  padding: 48px 36px;
+@media (max-width: 768px) {
+  .bid-left-col {
+    padding: 32px 20px;
+  }
 }
 
 .bid-value-row {
