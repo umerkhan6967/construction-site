@@ -1050,14 +1050,19 @@
   border-radius: var(--radius-sm);
   padding: 24px 20px;
   position: relative;
+  z-index: 1;
   transition: all var(--transition-fast);
   cursor: help;
 }
 
-.cert-card:hover {
-  transform: translateY(-4px);
+.cert-card:hover,
+.cert-card:focus,
+.cert-card:focus-within {
+  position: relative !important;
+  transform: translateY(-4px) !important;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
   border-color: var(--color-orange);
+  z-index: 999 !important;
 }
 
 .cert-abbrev {
@@ -1102,14 +1107,17 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s ease, transform 0.2s ease;
-  z-index: 100;
+  z-index: 9999 !important;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
 }
 
-.cert-card:hover .cert-tooltip {
+.cert-card:hover .cert-tooltip,
+.cert-card:focus .cert-tooltip,
+.cert-card:focus-within .cert-tooltip {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(100%) translateY(8px);
+  z-index: 9999 !important;
 }
 
 /* ==========================================================================

@@ -143,6 +143,14 @@
               color 0.3s ease;
 }
 
+.cert-card.reveal-on-scroll.is-revealed:hover,
+.cert-card.reveal-on-scroll.is-revealed:focus,
+.cert-card.reveal-on-scroll.is-revealed:focus-within {
+  transform: translateY(-4px) !important;
+  position: relative !important;
+  z-index: 999 !important;
+}
+
 .service-card-compact:hover .service-icon-wrap svg {
   transform: scale(1.1);
   color: var(--color-orange-hover);
