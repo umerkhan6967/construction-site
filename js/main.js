@@ -101,15 +101,18 @@ document.addEventListener('DOMContentLoaded', () => {
     reveals.forEach(el => el.classList.add('is-revealed'));
   }
 
-  // 2. Stats Counter Animation on Scroll
-  const statNumbers = document.querySelectorAll('.stat-num[data-target]');
+  // 2. Stats & Safety Counter Animation on Scroll
+  const statNumbers = document.querySelectorAll('.stat-num[data-target], .safety-counter[data-target]');
   if (statNumbers.length > 0 && 'IntersectionObserver' in window) {
     const statObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const el = entry.target;
-          const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+          const targetStr = el.getAttribute('data-target') || '0';
+          const isFloat = targetStr.includes('.');
+          const target = parseFloat(targetStr);
           const suffix = el.getAttribute('data-suffix') || '';
+          const formatComma = el.getAttribute('data-comma') === 'true' || target >= 1000;
           const duration = 1600; // 1.6s
           const startTime = performance.now();
 
@@ -117,14 +120,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1);
             const easeProgress = 1 - Math.pow(1 - progress, 3);
-            const currentVal = Math.floor(easeProgress * target);
+            let currentVal = isFloat
+              ? (easeProgress * target).toFixed(1)
+              : Math.floor(easeProgress * target);
+
+            if (formatComma && !isFloat) {
+              currentVal = Number(currentVal).toLocaleString();
+            }
 
             el.textContent = `${currentVal}${suffix}`;
 
             if (progress < 1) {
               requestAnimationFrame(updateCounter);
             } else {
-              el.textContent = `${target}${suffix}`;
+              const finalVal = formatComma && !isFloat
+                ? Number(target).toLocaleString()
+                : targetStr;
+              el.textContent = `${finalVal}${suffix}`;
             }
           }
 
