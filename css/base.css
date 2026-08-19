@@ -81,7 +81,7 @@ ul, ol {
 
 /* Reusable Typography Classes */
 .eyebrow {
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: 3px;
   color: var(--color-orange);
   font-weight: 600;
@@ -93,12 +93,12 @@ ul, ol {
 }
 
 .section-title {
-  font-size: clamp(28px, 3.5vw, 42px);
+  font-size: clamp(28px, 4vw, 48px);
   font-weight: 800;
   font-family: var(--font-display);
   text-transform: uppercase;
   color: var(--color-white);
-  line-height: 1.15;
+  line-height: 1.1;
   letter-spacing: -0.02em;
 }
 
